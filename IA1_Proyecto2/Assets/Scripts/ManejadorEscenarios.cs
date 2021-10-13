@@ -46,7 +46,7 @@ namespace Assets.Scripts
         public void CrearEscenario(Dictionary<String, short> valores)
         {
             if (Escenarios.Count == 6) {
-                Logger.LogError("No puedes crear más de 6 escenarios");
+                Logger.LogError("No puedes crear más de 6 escenarios", true);
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace Assets.Scripts
             {
                 if (e.Piso == piso)
                 {
-                    Logger.LogError("Ya hay un escenario asociado a este piso");
+                    Logger.LogError("Ya hay un escenario asociado a este piso", true);
                     return;
                 }
             }
@@ -71,6 +71,8 @@ namespace Assets.Scripts
             if (escenario.Guardar())
             {
                 Escenarios.Add(escenario);
+
+                Logger.Log("CREADO: " + escenario, true);
             }
         }
 
@@ -101,13 +103,13 @@ namespace Assets.Scripts
 
             if (DbManager.Eliminar(escenario.Piso))
             {
-                Logger.Log(string.Format("Escenario {0} eliminado correctamente.", escenario));
+                Logger.Log(string.Format("Escenario {0} eliminado correctamente.", escenario), true);
                 Escenarios.RemoveAt(value);
                 return true;
             }
             else
             {
-                Logger.Log(string.Format("No fue posible eliminar el escenario {0}.", escenario));
+                Logger.Log(string.Format("No fue posible eliminar el escenario {0}.", escenario), true);
                 return false;
             }
         }

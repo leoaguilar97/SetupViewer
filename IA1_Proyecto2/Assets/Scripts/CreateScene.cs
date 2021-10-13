@@ -70,6 +70,7 @@ public class CreateScene : MonoBehaviour
             {
                 SceneManager.LoadScene("VerEscenario");
                 ManejadorEscenarios.getInstance().CancelarModificacion();
+                Assets.Scripts.Logger.Log("Escenario modificado correctamente", true);
             }
         }
         else

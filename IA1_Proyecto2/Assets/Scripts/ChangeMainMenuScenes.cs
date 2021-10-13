@@ -12,4 +12,9 @@ public class ChangeMainMenuScenes : MonoBehaviour
     {
         SceneManager.LoadScene("CrearEscenario");
     }
+
+    public void OnApplicationQuit()
+    {
+        Assets.Scripts.Logger.CrearBitacora();
+    }
 }

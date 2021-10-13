@@ -108,7 +108,7 @@ namespace Assets.Scripts
             catch (Exception e)
             {
                 Logger.LogError("Error cargando escenarios");
-                Logger.LogError(e.Message);
+                Logger.LogError(e.Message, true);
             }
 
             return result;
@@ -131,7 +131,7 @@ namespace Assets.Scripts
             }
             catch (Exception e)
             {
-                Logger.LogError(e.Message);
+                Logger.LogError(e.Message, true);
             }
             return false;
         }

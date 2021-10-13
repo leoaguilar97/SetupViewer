@@ -96,7 +96,7 @@ namespace Assets.Scripts
                     Objetos.Add(objeto, pos);
                 }
 
-                //Logger.Log("Objeto " + objeto.ToString() + " asignado -> " + pos.ToString());
+                Logger.Log("Objeto " + objeto.ToString() + " asignado -> " + pos.ToString());
             }
             catch (InvalidCastException)
             {
@@ -104,7 +104,7 @@ namespace Assets.Scripts
             }
             catch(Exception e)
             {
-                Logger.LogError(e.Message);
+                Logger.LogError(e.Message, true);
             }
         }
 
@@ -114,18 +114,18 @@ namespace Assets.Scripts
             try
             {
                 Validar();
-                Logger.Log("Datos validados correctamente");
+                Logger.Log("Datos a modificar validados correctamente");
                 DbManager.Modificar(Piso, Objetos);
 
                 return true;
             }
             catch (SqliteException)
             {
-                Logger.LogError("El escenario a modificar no es correcto, o no existe");
+                Logger.LogError("El escenario a modificar no es correcto, o no existe", true);
             }
             catch (Exception e)
             {
-                Logger.LogError(e.Message);
+                Logger.LogError(e.Message, true);
             }
 
             return false;
@@ -137,18 +137,18 @@ namespace Assets.Scripts
             try
             {
                 Validar();
-                Logger.Log("Datos validados correctamente");
+                Logger.Log("Datos a guardar validados correctamente");
                 DbManager.Guardar(Piso, Objetos);
 
                 return true;
             }
             catch (SqliteException)
             {
-                Logger.LogError("Ya existe un escenario asociado a ese piso");
+                Logger.LogError("Ya existe un escenario asociado a ese piso", true);
             }
             catch(Exception e)
             {
-                Logger.LogError(e.Message);
+                Logger.LogError(e.Message, true);
             }
 
             return false;
